@@ -1,0 +1,6 @@
+[Unit]
+Description=AutoRip CD on insertion
+
+[Service]
+Type=oneshot
+ExecStart=/usr/local/bin/ripit.sh

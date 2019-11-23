@@ -15,7 +15,8 @@ finish() {
 trap finish EXIT
 
 echo "$(date)" >> $LOGFILE
-( 
+(
+    umount /media/music
     mount /dev/sda1 /media/music || mount /dev/sdb1 /media/music
     RET=$?
     if [ $RET -ne 0 ]; then

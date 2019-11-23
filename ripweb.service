@@ -1,0 +1,12 @@
+[Unit]
+Description=Description for sample script goes here
+After=network.target
+RequiresMountsFor=/etc/
+
+[Service]
+Type=simple
+ExecStart=/usr/local/bin/ripweb.py
+TimeoutStartSec=0
+
+[Install]
+WantedBy=default.target
