@@ -24,7 +24,7 @@ def stream():
                 logdata = "".join(f.readlines()[-50:])
                 #logdata = f.read()
                 if logdata:
-                    html = conv.convert(logdata)
+                    html = conv.convert(logdata.decode('utf-8'))
                 else:
                     html = ""
                 #print(html)
