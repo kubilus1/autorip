@@ -1,5 +1,6 @@
 #!/usr/bin/env python
 import os
+import math
 from time import sleep
 from flask import Flask, render_template
 from ansi2html import Ansi2HTMLConverter
@@ -17,11 +18,15 @@ def index():
 
 @app.route('/stream')
 def stream():
+    filename = '/var/log/cdrip.log'
     def generate():
-        with open('/var/log/cdrip.log') as f:
+        buf_size=4096
+        fsize = os.stat(filename).st_size
+        with open(filename) as h:
+            h.seek(fsize - min(buf_size*100, fsize))
             while True:
                 #yield f.read()
-                logdata = "".join(f.readlines()[-50:])
+                logdata = "".join(h.readlines()[-50:])
                 #logdata = f.read()
                 if logdata:
                     html = conv.convert(logdata.decode('utf-8'))

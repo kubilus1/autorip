@@ -14,4 +14,5 @@ cp abcde.conf /etc/abcde.conf
 udevadm control --reload
 touch /var/log/cdrip.log
 mkdir -p /media/music
+python setup.py install
 systemctl enable ripweb
