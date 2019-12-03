@@ -1,1 +1,1 @@
-SUBSYSTEM=="block", KERNEL=="sr0", ENV{ID_CDROM_MEDIA_CD}=="1", ACTION=="change", RUN+="/bin/systemctl start ripit.service"
+SUBSYSTEM=="block", KERNEL=="sr0", ENV{ID_CDROM_MEDIA}=="1", ACTION=="change", RUN+="/bin/systemctl start ripit.service"
